@@ -1,3 +1,6 @@
+let quoteText = '';
+let quoteAuthor = '';
+
 const getNewColor = (oldColor) => {
     const colors = [
         '#cc0000ff', '#e69138ff', '#f1c232ff',
@@ -25,12 +28,18 @@ const fetchQuotes = () => {
     .then(data => {
         const newColor = getNewColor();
         colorPage(newColor);
-        document.querySelector('.quotetext').textContent = data.quoteText;
-        document.querySelector('.quoteauthor').textContent =
-        data.quoteAuthor ? data.quoteAuthor : 'Unknown';
+        quoteText = data.quoteText.trim();
+        quoteAuthor = data.quoteAuthor ? data.quoteAuthor : 'Unknown';
+        quoteAuthor = quoteAuthor.trim();
+        document.querySelector('.quotetext').textContent = quoteText;
+        document.querySelector('.quoteauthor').textContent = quoteAuthor;
+        document.getElementById('twitter').setAttribute('href', 
+        `https://twitter.com/intent/tweet?text="${quoteText}" - ${quoteAuthor}`);
     })
     .catch(err => { console.log(err); });
 };
 
 colorPage('#000000ff');
 fetchQuotes();
+
+document.getElementById('new-quote').addEventListener('click', () => fetchQuotes());
