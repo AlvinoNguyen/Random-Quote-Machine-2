@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Poiret+One&display=swap');
+
 * {
     box-sizing: border-box;
     margin: 0;
@@ -10,6 +12,11 @@
     --big-font-size: 2rem;
     --small-font-size: 1rem;
     --quote-font: 'Poiret One', cursive;
+    --transition-time: .75s;
+    --transition-opacity: opacity .3s;
+    --transition-color:
+    background-color var(--transition-time),
+    color var(--transition-time);
 }
 
 #app-container {
@@ -18,6 +25,7 @@
     align-items: center;
     height: 100vh;
     width: 100vw;
+    transition: var(--transition-color);
 }
 
 #quote-box {
@@ -31,6 +39,7 @@
 .quote-container {
     font-family: var(--quote-font);
     font-weight: 1000;
+    transition: var(--transition-color);
 }
 
 .quote-text {
@@ -44,6 +53,7 @@
     margin: 0 .5rem;
     position: relative;
     bottom: .33rem;
+    user-select: none;
 }
 
 .quote-author {
@@ -54,6 +64,7 @@
 .button-container {
     display: flex;
     justify-content: flex-start;
+    user-select: none;
 }
 
 .button {
@@ -62,11 +73,14 @@
     width: 40px;
     border-radius: var(--broder-radius-size);
     margin: .15rem;
+    transition: var(--transition-color),
+    var(--transition-opacity);
 }
 
 .button:hover {
     cursor: pointer;
     opacity: .85;
+    transition: var(--transition-opacity);
 }
 
 .icon-image {
@@ -82,4 +96,6 @@
     padding: 0 1rem;
     margin-left: auto;
     width: auto;
+    transition: var(--transition-color),
+    var(--transition-opacity);
 }
